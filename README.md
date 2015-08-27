@@ -242,7 +242,7 @@ beacons. There are (at least) two nice apps for Android that show all the
 details of the three types of Eddystone frames:
 
 * nRFMaster Control Panel by Nordic Semiconductors [6]
-* Eddystone Validator by Google [7] (requires Android 5 aka. Lollipop)
+* Eddystone Validator by Google (requires Android 5 aka. Lollipop) [7]
 
 Faros is cycling through all frame types (if you have enabled all of them)
 and switches to a new frame type every second. So after about 3 seconds you 
