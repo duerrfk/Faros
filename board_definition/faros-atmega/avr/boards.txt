@@ -1,0 +1,22 @@
+faros.name=Faros ATMega328P @ 1 MHz
+
+faros.upload.tool=avrdude
+faros.upload.protocol=arduino
+faros.upload.maximum_size=32256
+faros.upload.maximum_data_size=2048
+faros.upload.speed=9600
+
+faros.build.mcu=atmega328p
+faros.build.f_cpu=1000000L
+faros.build.core=arduino:arduino
+faros.build.variant=arduino:standard
+faros.build.board=faros
+
+#faros.bootloader.low_fuses=0x62
+#faros.bootloader.high_fuses=0xD9
+#faros.bootloader.extended_fuses=0x06
+#faros.bootloader.file=atmega/foo.hex
+#faros.bootloader.unlock_bits=0x3F
+#faros.bootloader.lock_bits=0x0F
+#faros.bootloader.tool=arduino:avrdude
+
