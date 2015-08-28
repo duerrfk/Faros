@@ -1478,15 +1478,15 @@ design rules under a new name.</description>
 <param name="rvViaInner" value="0.25"/>
 <param name="rvMicroViaOuter" value="0.25"/>
 <param name="rvMicroViaInner" value="0.25"/>
-<param name="rlMinPadTop" value="10mil"/>
+<param name="rlMinPadTop" value="12mil"/>
 <param name="rlMaxPadTop" value="20mil"/>
 <param name="rlMinPadInner" value="10mil"/>
 <param name="rlMaxPadInner" value="20mil"/>
-<param name="rlMinPadBottom" value="10mil"/>
+<param name="rlMinPadBottom" value="12mil"/>
 <param name="rlMaxPadBottom" value="20mil"/>
-<param name="rlMinViaOuter" value="8mil"/>
+<param name="rlMinViaOuter" value="12mil"/>
 <param name="rlMaxViaOuter" value="20mil"/>
-<param name="rlMinViaInner" value="8mil"/>
+<param name="rlMinViaInner" value="12mil"/>
 <param name="rlMaxViaInner" value="20mil"/>
 <param name="rlMinMicroViaOuter" value="4mil"/>
 <param name="rlMaxMicroViaOuter" value="20mil"/>
@@ -1823,13 +1823,14 @@ design rules under a new name.</description>
 <contactref element="R6" pad="1"/>
 <wire x1="20.32" y1="48.26" x2="20.32" y2="46.99" width="0.8128" layer="16"/>
 <wire x1="20.32" y1="46.99" x2="24.13" y2="43.18" width="0.8128" layer="16"/>
-<wire x1="24.13" y1="43.18" x2="34.29" y2="43.18" width="0.8128" layer="16"/>
+<wire x1="24.13" y1="43.18" x2="35.56" y2="43.18" width="0.8128" layer="16"/>
 <wire x1="36.83" y1="33.02" x2="36.83" y2="40.64" width="0.8128" layer="16"/>
-<wire x1="36.83" y1="40.64" x2="34.29" y2="43.18" width="0.8128" layer="16"/>
 <via x="36.83" y="40.64" extent="1-16" drill="0.8" shape="square"/>
 <via x="36.83" y="58.42" extent="1-16" drill="0.8" shape="square"/>
 <wire x1="36.83" y1="58.42" x2="36.83" y2="40.64" width="0.8128" layer="1"/>
 <wire x1="36.83" y1="58.42" x2="39.37" y2="58.42" width="0.8128" layer="16"/>
+<wire x1="36.83" y1="40.64" x2="36.83" y2="41.91" width="0.8128" layer="16"/>
+<wire x1="36.83" y1="41.91" x2="35.56" y2="43.18" width="0.8128" layer="16"/>
 </signal>
 <signal name="N$19">
 <via x="44.45" y="55.88" extent="1-16" drill="0.8" shape="square"/>
@@ -1844,23 +1845,24 @@ design rules under a new name.</description>
 <wire x1="44.45" y1="46.99" x2="44.45" y2="44.45" width="0.8128" layer="16"/>
 <wire x1="41.91" y1="55.88" x2="44.45" y2="55.88" width="0.8128" layer="16"/>
 <wire x1="39.37" y1="33.02" x2="39.37" y2="44.45" width="0.8128" layer="16"/>
-<wire x1="39.37" y1="44.45" x2="34.29" y2="44.45" width="0.8128" layer="16"/>
-<wire x1="34.29" y1="44.45" x2="33.02" y2="45.72" width="0.8128" layer="16"/>
-<wire x1="33.02" y1="45.72" x2="24.13" y2="45.72" width="0.8128" layer="16"/>
+<wire x1="35.56" y1="45.72" x2="24.13" y2="45.72" width="0.8128" layer="16"/>
 <wire x1="24.13" y1="45.72" x2="22.86" y2="46.99" width="0.8128" layer="16"/>
 <wire x1="44.45" y1="55.88" x2="44.45" y2="46.99" width="0.8128" layer="1"/>
+<wire x1="39.37" y1="44.45" x2="36.83" y2="44.45" width="0.8128" layer="16"/>
+<wire x1="36.83" y1="44.45" x2="35.56" y2="45.72" width="0.8128" layer="16"/>
 </signal>
 <signal name="N$2">
 <via x="34.29" y="58.42" extent="1-16" drill="0.8" shape="square"/>
 <contactref element="IC1" pad="19"/>
 <contactref element="SV2" pad="3"/>
 <contactref element="R3" pad="1"/>
-<wire x1="39.37" y1="55.88" x2="36.83" y2="55.88" width="0.8128" layer="16"/>
-<wire x1="36.83" y1="55.88" x2="34.29" y2="58.42" width="0.8128" layer="16"/>
+<wire x1="39.37" y1="55.88" x2="35.56" y2="55.88" width="0.8128" layer="16"/>
 <wire x1="34.29" y1="58.42" x2="30.48" y2="58.42" width="0.8128" layer="16"/>
 <via x="34.29" y="40.64" extent="1-16" drill="0.8" shape="square"/>
 <wire x1="34.29" y1="33.02" x2="34.29" y2="40.64" width="0.8128" layer="16"/>
 <wire x1="34.29" y1="58.42" x2="34.29" y2="40.64" width="0.8128" layer="1"/>
+<wire x1="35.56" y1="55.88" x2="34.29" y2="57.15" width="0.8128" layer="16"/>
+<wire x1="34.29" y1="57.15" x2="34.29" y2="58.42" width="0.8128" layer="16"/>
 </signal>
 <signal name="N$6">
 <contactref element="IC1" pad="5"/>
