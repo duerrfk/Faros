@@ -6,8 +6,8 @@ The main features are:
 
 * Full support for all Eddystone frame types (UID, URL, TLM)
 * Energy efficiency allowing for runtimes of several years
-* Using standard platforms: commodity Arduino and nRF8001 BLE module
-* Simplicity of hardware: easy to build using an commodity Arduino or our
+* Using popular and powerful hardware platforms: Arduino and nRF8001 BLE chip
+* Simplicity of hardware: easy to build using a commodity Arduino or our
   Faros board together with the BLE module MOD-nRF8001 from Olimex [3]
 
 This project includes:
