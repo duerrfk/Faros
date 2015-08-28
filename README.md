@@ -40,6 +40,12 @@ only need to install this tool if you want to modify the BLE service
 description for some reason. The data of Eddystone frames is defined in the 
 source code.
 
+You also need the BLE module MOD-nRF8001 from Olimex [3]. Earlier versions 
+of this module used the "C" revision of the nRF8001, which does not support
+broadcasting data! So you need a module with the "D" revision of the nRF8001.
+According to Olimex, all modules sold now have the "D" revision of the
+nRF8001.
+
 Since the nRF8001 module is specified for a voltage range of 1.9 V - 3.6 V, 
 you should use an Arduino with suitable voltage levels. For instance, 
 Arduino UNO uses 5 V, so you would have to shift levels when connecting to 
