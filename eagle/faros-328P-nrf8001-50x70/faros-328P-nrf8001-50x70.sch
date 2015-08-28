@@ -7801,6 +7801,7 @@ W = angled&lt;p&gt;
 <sheets>
 <sheet>
 <plain>
+<text x="121.92" y="-12.7" size="1.778" layer="91">Faros v1.0</text>
 </plain>
 <instances>
 <instance part="IC1" gate="G$1" x="45.72" y="17.78"/>
