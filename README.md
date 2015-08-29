@@ -152,14 +152,13 @@ selected the nRF8001 for several reasons:
 The BLE module MOD-nRF8001 from Olimex provides a ready-to-use solution to use
 the nRF8001 together with the Arduino.
 
-The Faros board is kept as simple as possible, so you can also etch it yourself
-(through-hole design, no SMD components, thick traces, 70 mm x 50 mm 
-size so you can get two on one 70 mm x 100 mm board). The ATMega is programmed 
-using ISP, so no USB is required which again saves cost and energy. It uses 
-the ATMega's internal RC oscillator, so no external crystal is required. The 
-repository includes the Eagle files and two PDFs for printing the layout
-(see folder `pcb`): one with a single board and one with two boards side by 
-side to fit onto a 70 mm x 100 mm PCB. 
+The Faros board is kept as simple as possible (through-hole design, no SMD 
+components). It comes in two versions: (1) a single-sided 50mm x 70mm layout 
+that is well-suited for etching at home (a PDF of the layout can be found in 
+folder `pcb`); (2) a double-sided 50mm x 50mm layout that can be sent to a PCB 
+manufacturer. For both versions, the ATMega is programmed using ISP, so no USB 
+is required which again saves cost and energy. Moreover, we use the ATMega's 
+internal RC oscillator, so no external crystal is required. 
 
 ## Programming the Faros Board
 
