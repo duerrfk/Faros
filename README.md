@@ -129,8 +129,18 @@ send UID frames, URL frames, and TLM frames (of course only sequentially).
 # Hardware: The Faros Board
 
 If you just want to experiment, you can simply use a commodity Arduino 
-running at 3.3 V like the Arduino Pro Micro. However, if you want to deploy 
-beacons in the field, two requirements become essential:
+running at 3.3 V like the Arduino Pro Micro. Just directly connect the pins
+of the Arduino Pro Micro and the BLE module like this:
+
+* MISO = 14
+* MOSI = 16
+* SCK = 15
+* REQN/SS = 7
+* RDYN = 3 -> INT0
+* RST = 4
+
+However, if you want to deploy beacons in the field, two requirements become 
+essential:
 
 * Energy efficiency: the beacon must run from battery for several years 
 * Cost: if you want to deploy many beacons, a commodity Arduino board
@@ -153,12 +163,25 @@ The BLE module MOD-nRF8001 from Olimex provides a ready-to-use solution to use
 the nRF8001 together with the Arduino.
 
 The Faros board is kept as simple as possible (through-hole design, no SMD 
-components). It comes in two versions: (1) a single-sided 50mm x 70mm layout 
+components). It comes in two variants: (1) a single-sided 50mm x 70mm layout 
 that is well-suited for etching at home (a PDF of the layout can be found in 
 folder `pcb`); (2) a double-sided 50mm x 50mm layout that can be sent to a PCB 
-manufacturer. For both versions, the ATMega is programmed using ISP, so no USB 
-is required which again saves cost and energy. Moreover, we use the ATMega's 
-internal RC oscillator, so no external crystal is required. 
+manufacturer (the Gerber files can be found in folder `gerber`). For both 
+variants, the ATMega is programmed using ISP, so no USB is required which 
+again saves cost and energy. Moreover, we use the ATMega's internal RC 
+oscillator, so no external crystal is required. 
+
+Here is the bill of material for the Faros board:
+
+* C1, C2, C3: 100 nF (ceramic capacitor, X7R, 5.08 pitch)
+* LED1: 3 mm
+* R1: 10 k Ohm
+* R2: 100 Ohm
+* R3, R4, R5: 4.7 k Ohm
+* IC1: ATMega 328P-PU
+* MOD1: Olimex MOD-nRF8001
+* SV1: 3x2 pin header (2.54 pitch)
+* X1: screw terminal (5.08 pitch)
 
 ## Programming the Faros Board
 
