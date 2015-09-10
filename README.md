@@ -9,6 +9,8 @@ The main features are:
 * Using popular and powerful hardware platforms: Arduino and nRF8001 BLE chip
 * Simplicity of hardware: easy to build using a commodity Arduino or our
   Faros board together with the BLE module MOD-nRF8001 from Olimex [3]
+* Liberal licensing: Apache License 2.0 for software, CERN Open Hardware 
+  Licence v1.2 for hardware 
 
 This project includes:
 
@@ -277,6 +279,16 @@ and switches to a new frame type every second. So after about 3 seconds you
 should see the data of all three frame types (most interesting is maybe
 the TLM type since its data changes dynamically).
 
+# Licensing
+
+Faros uses two licenses for open hardware and software, respectively:
+
+* The software (source code) is licensed under the Apache License 2.0 [8]
+* The hardware (schematic diagrams, circuit board layouts, hardware
+  documentation) is licensed under the CERN Open Hardware Licence v1.2 [9]
+
+Both licenses are also included in the repository.
+
 # References
 
 * [1] https://developers.google.com/beacons/
@@ -286,3 +298,5 @@ the TLM type since its data changes dynamically).
 * [5] https://www.nordicsemi.com/chi/node_176/2.4GHz-RF/nRFgo-Studio
 * [6] https://www.nordicsemi.com/eng/Products/nRFready-Demo-Apps/nRF-Master-Control-Panel-application
 * [7] https://github.com/google/eddystone
+* [8] http://www.apache.org/licenses/LICENSE-2.0
+* [9] http://www.ohwr.org/attachments/2388/cern_ohl_v_1_2.txt
