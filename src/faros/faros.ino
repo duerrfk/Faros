@@ -84,6 +84,11 @@
 // RDYN low, when it has some data to send to the MCU.
 // pin 3 = RDYN is linked to INT0 on Arduino Pro Micro.
 #define RDYN_INTR_NO 0
+
+// nRF8001 supports max. 3 MHz SPI clock frequency.
+// Arduino Pro Micro runs at 8 MHz. By dividing by 4, we
+// set the SPI clock frequency to 2 MHz.    
+#define SPI_CLOCK_DIV SPI_CLOCK_DIV4
 #endif
 
 #ifdef HARDWARE_ATMEGA328P_1MHz
@@ -103,12 +108,12 @@
 // RDYN low, when it has some data to send to the MCU.
 // pin 2 = RDYN is linked to INT0 on the Faros board.
 #define RDYN_INTR_NO 0
-#endif
 
 // nRF8001 supports max. 3 MHz SPI clock frequency.
-// Arduino Pro Micro runs at 8 MHz. By dividing by 4, we
-// set the SPI clock frequency to 2 MHz.    
-#define SPI_CLOCK_DIV SPI_CLOCK_DIV4
+// The Faros board runs at 1 MHz. Two is the smallest clock
+// divider that we can set:    
+#define SPI_CLOCK_DIV SPI_CLOCK_DIV2
+#endif
 
 // Advertisement interval in 0.625 ms, min 0x0020 (20 ms), max 0x4000 (10.240 s). 
 // 1600 -> 1 s
