@@ -56,12 +56,23 @@ whose design is also included in this repository..
  
 ## Adapting the Source Code
 
-Depending on the Arduino model used, you have to adapt the source code to
-select the correct pins. The Arduino communicates with the nRF8001 through SPI.
-Beyond the standard SPI pins (MISO, MOSI, SCK, SS), the nRF8001 uses another 
-select pin (called RDYN) to signal that the nRF8001 has events to be sent to the
-Arduino. Moreover, the reset pin (RST) of the nRF8001 has to be connected.
-Thus, we need 6 pins to connect the Arduino to the nRF8001:
+If you want to use the Faros board or Arduino Pro Micro, you can simply
+set the following definitions at the beginning of the sketch:
+
+For the Faros board:
+
+    #define HARDWARE_ATMEGA328P_1MHz
+
+For Arduino Pro Micro:
+
+    #define HARDWARE_ATMEGA32U4_8MHz
+
+For those who are interested in the technical details: The Arduino communicates
+with the nRF8001 through SPI. Beyond the standard SPI pins (MISO, MOSI, SCK, 
+SS), the nRF8001 uses another select pin (called RDYN) to signal that the 
+nRF8001 has events to be sent to the Arduino. Moreover, the reset pin (RST) of 
+the nRF8001 has to be connected. Thus, we need 6 pins to connect the Arduino 
+to the nRF8001:
 
 1. MISO
 2. MOSI
@@ -70,7 +81,6 @@ Thus, we need 6 pins to connect the Arduino to the nRF8001:
 5. RDYN
 7. RST
 
-The pin mapping is defined in the beginning of the sketch.
 For the standard SPI pins, select the usual pins depending on your Arduino.
 RDYN should be assigned to a pin with a hardware interrupt. We use this 
 interrupt to wake up the Arduino from power-down mode when the nRF8001 wants

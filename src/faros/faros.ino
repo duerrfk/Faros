@@ -28,29 +28,38 @@
 #include "url_schemes.h"
 #include "commands.h"
 
-// !!!!!!!!!!!!!!!!!!!!!! CAUTION !!!!!!!!!!!!!!!!!!!!!!!!
-// ONLY ENABLE THIS OPTION IF YOU KNOW WHAT YOU ARE DOING!
+//// Define your hardware platform to set pin mappings, etc. 
+// The following definition is suitable for the Faros board. 
+//#define HARDWARE_ATMEGA328P_1MHz
+// The following definition is suitable for Arduino Pro Micro.
+#define HARDWARE_ATMEGA32U4_8MHz
+
 // Putting the MCU into power-down mode is essential to save 
 // energy and to achieve runtimes of several years. However, 
-// be careful if you use an Arduino flashed via serial port. 
-// If the serial port is not discovered by your PC until the 
-// device falls asleep again, you might not be able to flash 
-// it anymore, via serial port---some serial ports like the 
-// one of the Arduino Pro Micro really take long to be 
-// disovered. Then, you have two options: 
+// be careful if you use an Arduino flashed via serial port
+// like Arduino Pro Micro. If the serial port is not 
+// discovered by your PC until the device falls asleep, you 
+// might not be able to flash it anymore, via serial port. 
+// To recover, you have two options: 
 //
 // 1. Connect a cable between PIN_RDYN and GND of the Arduino. 
 //    This will prevent the the activation of power-down 
 //    mode since INT0 is constantly active (the device thinks,
 //    that the nRF8001 wants to send events).
 // 2. Flash via ISP
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//#define DO_SLEEP
+//
+// Since the Faros board is flashed via ISP anyway, it is
+// save to use this setting with the Faros board.
+#ifdef HARDWARE_ATMEGA328P_1MHz
+#define DO_SLEEP
+#endif
 
 // Disabling brown-out detecting while sleeping saves about 25 uA.
-// Not all MCUs support this. ATMega 328P does; 
-// doesn't.
-//#define DISABLE_BOD_WHILE_SLEEPING
+// Not all MCUs support this. ATmega328P used by the Faros board 
+// does. ATmega32U4 used by Arduino Pro Micro doesn't.
+#ifdef HARDWARE_ATMEGA328P_1MHz
+#define DISABLE_BOD_WHILE_SLEEPING
+#endif
 
 // 8.8 fixed point arithmetic
 #define FIXED_8_8_FBITS 8
@@ -58,7 +67,8 @@
 #define FIXED_8_8_FROM_FLOAT(x) ((int16_t) ((x)*FIXED_8_8_ONE))
 
 //// Arduino pins connected to nRF8001.
-// The following values are valid of Arduino Pro Micro. 
+#ifdef HARDWARE_ATMEGA32U4_8MHz
+// The following values are valid for Arduino Pro Micro. 
 #define PIN_MOSI 16
 #define PIN_MISO 14
 #define PIN_SCK 15
@@ -74,6 +84,26 @@
 // RDYN low, when it has some data to send to the MCU.
 // pin 3 = RDYN is linked to INT0 on Arduino Pro Micro.
 #define RDYN_INTR_NO 0
+#endif
+
+#ifdef HARDWARE_ATMEGA328P_1MHz
+// The following values are valid for the Faros board. 
+#define PIN_MOSI 11
+#define PIN_MISO 12
+#define PIN_SCK 13
+// nRF8001 uses two "slave select" pins, one from Arduino (master) to nRF8001
+// (slave) called REQN, and one from slave to master called RDYN for signaling 
+// events from nRF8001 to Arduino. For RDYN select a pin with attached 
+// hardware interrupt to enable wake-up from sleep mode. 
+#define PIN_REQN 10
+#define PIN_RDYN 2  
+#define PIN_RST 3
+
+// We use this interrupt to react to RDYN events. nRF8001 pulls
+// RDYN low, when it has some data to send to the MCU.
+// pin 2 = RDYN is linked to INT0 on the Faros board.
+#define RDYN_INTR_NO 0
+#endif
 
 // nRF8001 supports max. 3 MHz SPI clock frequency.
 // Arduino Pro Micro runs at 8 MHz. By dividing by 4, we
