@@ -56,8 +56,8 @@ whose design is also included in this repository..
  
 ## Adapting the Source Code
 
-If you want to use the Faros board or Arduino Pro Micro, you can simply
-set the following definitions at the beginning of the sketch:
+If you use the Faros board or Arduino Pro Micro, you can simply
+set the following definitions at the beginning of the sketch.
 
 For the Faros board:
 
@@ -133,10 +133,11 @@ You need to set the data for UID and URL frames through variables at the
 beginning of the sketch. The data for TLD frames is detected automatically 
 (nRF8001 features a temperature sensor and voltage sensor).
 
-Moreover, you can select whether you want to send UID and/or URL frames by
-setting the variables `is_enabled_uid`, `is_enabled_url`, and `is_enabled_tlm`,
-respectively. The beacon will cycle through all enabled frames, so it can
-send UID frames, URL frames, and TLM frames (of course only sequentially).
+Moreover, you can select whether you want to send UID and/or URL frames 
+and/or TLM frames by setting the variables `is_enabled_uid`, `is_enabled_url`, 
+and `is_enabled_tlm`, respectively. The beacon will cycle through all 
+enabled frames, so it can send UID frames, URL frames, and TLM frames 
+(sequentially).
 
 # Hardware: The Faros Board
 
