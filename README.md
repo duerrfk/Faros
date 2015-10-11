@@ -12,10 +12,17 @@ The main features are:
 * Liberal licensing: Apache License 2.0 for software, CERN Open Hardware 
   Licence v1.2 for hardware 
 
+The following images show a self-etched Faros board and a Faros board
+manufactured by a PCB manufacturer.
+
+![Self-etched Faros board](/img/faros_board_50x70_v1_0.jpg)
+
+![Faros PCB manufactured by Seeed Studio](/img/faros_board_50x50_v1_0.jpg)
+
 This project includes:
 
 * Source code for Arduino
-* Faros board schematics and board layout
+* Faros board schematics and board layouts
 
 # Source Code
 
@@ -96,8 +103,8 @@ Arduino numbering scheme:
 * RDYN = 3 -> INT0
 * RST = 4
 
-For the Faros board based on ATMega 328P, we used the following pins (Arduino 
-numbering scheme; ATMega names are given in brackets):
+For the Faros board based on ATmega328P, we used the following pins (Arduino 
+numbering scheme; ATmega names are given in brackets):
 
 * MISO = 12 (PB4)
 * MOSI = 11 (PB3)
@@ -110,8 +117,8 @@ Moreover, nRF8001 supports a maximum SPI clock frequency of 3 MHz. To adjust the
 SPI clock frequency, set the definition SPI_CLOCK_DIV according to your 
 platform. For instance, the Arduino Pro Micro is running at 8 MHz, so we need 
 to divide it by 4 (SPI_CLOCK_DIV4) to get 2 MHz. The Faros board uses an 
-ATMega 328P at 1 MHz, so theoretically we could divide by 1. However, the 
-smallest divider available for ATMega is 2 (SPI_CLOCK_DIV2), so we will run at 
+ATmega328P at 1 MHz, so theoretically we could divide by 1. However, the 
+smallest divider available for ATmega is 2 (SPI_CLOCK_DIV2), so we will run at 
 500 kHz SPI clock.
 
 Finally, you need to set your specific data to be broadcasted by the beacon.
@@ -163,7 +170,7 @@ The Faros board tries to fulfill these requirements plus one more: keep
 things as simple as possible so virtually everyone can build a Faros
 beacon.
 
-The Faros board uses an ATMega 328P together with the BLE module MOD-nRF8001 
+The Faros board uses an ATmega328P together with the BLE module MOD-nRF8001 
 from Olimex [3] based on the nRF8001 chip from Nordic Semiconductors. We 
 selected the nRF8001 for several reasons:
 
@@ -176,12 +183,12 @@ The BLE module MOD-nRF8001 from Olimex provides a ready-to-use solution to use
 the nRF8001 together with the Arduino.
 
 The Faros board is kept as simple as possible (through-hole design, no SMD 
-components). It comes in two variants: (1) a single-sided 50mm x 70mm layout 
-that is well-suited for etching at home (a PDF of the layout can be found in 
-folder `pcb`); (2) a double-sided 50mm x 50mm layout that can be sent to a PCB 
-manufacturer (the Gerber files can be found in folder `gerber`). For both 
-variants, the ATMega is programmed using ISP, so no USB is required which 
-again saves cost and energy. Moreover, we use the ATMega's internal RC 
+components). It comes in two variants: (1) a single-sided 50 mm x 70 mm layout 
+that is well-suited for self-etching (a PDF of the layout can be found in 
+folder `pcb`); (2) a double-sided 50 mm x 50 mm layout that can be sent to a 
+PCB manufacturer (the Gerber files can be found in folder `gerber`). For both 
+variants, the ATmega is programmed using ISP, so no USB is required which 
+again saves cost and energy. Moreover, we use the ATmega's internal RC 
 oscillator, so no external crystal is required. 
 
 Here is the bill of material for the Faros board:
@@ -191,7 +198,7 @@ Here is the bill of material for the Faros board:
 * R1: 10 k Ohm
 * R2: 100 Ohm
 * R3, R4, R5: 4.7 k Ohm
-* IC1: ATMega 328P-PU
+* IC1: ATmega328P-PU
 * MOD1: Olimex MOD-nRF8001
 * SV1: 3x2 pin header (2.54 pitch)
 * X1: screw terminal (5.08 pitch)
@@ -205,12 +212,14 @@ layout:
      SCK <-- 3 4 --> MOSI
      RST <-- 5 6 --> GND
 
-You can leave the BLE module connected while programming the ATMega (the 
+![Faros board connected to ISP](/img/faros_isp.jpg)
+
+You can leave the BLE module connected while programming the ATmega (the 
 4.7 k resistors shield the SPI pins of the nRF8001 during programming). However,
 you should use a 3.3 V programmer since the maximum voltage of the nRF8001
 is 3.6 V.
 
-To preprare the ATMega 328P, program the following fuses (note that "0" means 
+To preprare the ATmega328P, program the following fuses (note that "0" means 
 that the fuse is programmed):
 
 * CKSEL = 0010: use internal 8 MHz RC oscillator
@@ -225,15 +234,15 @@ to execute this command as root depending on your programmer):
 
     $> avrdude -c usbasp -p m328p -U lfuse:w:0x42:m -U hfuse:w:0xd9:m -U efuse:w:0x06:m
 
-Then, we compile and write the program to the ATMega. Before compiling the 
+Then, we compile and write the program to the ATmega. Before compiling the 
 program, make sure you have adapted the pins (see above), SPI clock divider 
-(see above), and to generate code for an ATMega at 1 MHz. In the repository, 
+(see above), and to generate code for an ATmega at 1 MHz. In the repository, 
 you will find a suitable board definition for the Arduino IDE (see folder 
 `board_definition`). Copy the directory `faros-atmega` into the folder 
 `hardware` in your Arduino sketchbook. Then you should find and select the 
 board  called `Faros ATMega 328P @ 1 MHz` under the menu item `Tools/Board`. 
 
-Compiling generates a hex file that we need to program the ATMega. This hex 
+Compiling generates a hex file that we need to program the ATmega. This hex 
 file is a little bit hidden in the temporary build directory of the Arduino
 IDE. If you use Linux  and Arduino IDE 1.6, have a look at the `/tmp` 
 directory. After hitting the  compile button in the Arduino IDE, search for the
@@ -246,17 +255,17 @@ latest hex file called  `faros.cpp.hex` in a temporary directory named
 ## Saving Energy
 
 The basic method to save energy is to minimize the duty cycle. Therefore,
-we put the ATMega into power-down mode (deepest power-saving mode) as long as
+we put the ATmega into power-down mode (deepest power-saving mode) as long as
 possible, and only wake it up, when some work has to be done. This can either
 be an event from the nRF8001 module , which triggers a hardware interrupt on
 the RDYN pin. Or it can be a timer event from the watch dog timer (which
 keeps running in power-down mode in contrast to the other timers). By switching
 of the ADC and disabling brown-out detecting while sleeping (only possible
-with the ATMega 328P, not with the ATMega 328), the ATMega 328P only consumes 
+with the ATmega328P, not with the ATmega328), the ATmega328P only consumes 
 a few uA (actually, the "P" in 328P means "pico-power"). 
 
 Another important design choice is the type of battery. The nRF8001 
-can run down to 1.9 V; the ATMega down to 1.8 V at frequencies <= 4 MHz. The 
+can run down to 1.9 V; the ATmega down to 1.8 V at frequencies <= 4 MHz. The 
 maximum voltage for the nRF8001 is 3.6 V. Thus, one good option is to use two 
 AA or AAA size alkaline batteries. They are cheap. They provide > 1800 mAh, 
 which should suffice for several years of runtime. They are discharged at about 
