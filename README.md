@@ -59,7 +59,7 @@ Since the nRF8001 module is specified for a voltage range of 1.9 V - 3.6 V,
 you should use an Arduino with suitable voltage levels. For instance, 
 Arduino UNO uses 5 V, so you would have to shift levels when connecting to 
 nRF8001. We tested with a 3.3 V Arduino Pro Micro and the Faros board
-whose design is also included in this repository..
+whose design is also included in this repository.
  
 ## Adapting the Source Code
 
